@@ -15,5 +15,7 @@ export function useTreatments(): Treatment[] {
   const { data } = useQuery({
     queryKey: [queryKeys.treatments],
     queryFn: getTreatments, 
-  })
+  });
+
+  return data;
 }
