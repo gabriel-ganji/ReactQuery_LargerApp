@@ -19,11 +19,6 @@ export function useTreatments(): Treatment[] {
   const { data = fallback } = useQuery({
     queryKey: [queryKeys.treatments],
     queryFn: getTreatments,
-    staleTime: 600000, //10 minutos
-    gcTime: 900000, // 15 minutes (doesn't make sense for staleTime to exceed gcTime)
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
 
   return data;
@@ -34,7 +29,5 @@ export function usePrefetchTreatments(): void {
   queryClient.prefetchQuery({
     queryKey: [queryKeys.treatments],
     queryFn: getTreatments,
-    staleTime: 600000, //10 minutos
-    gcTime: 900000, // 15 minutes (doesn't make sense for staleTime to exceed gcTime)
   })
 }
