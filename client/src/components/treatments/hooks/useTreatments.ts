@@ -13,12 +13,17 @@ async function getTreatments(): Promise<Treatment[]> {
 }
 
 export function useTreatments(): Treatment[] {
-  
+
   const fallback: Treatment[] = [];
   // get data from server via useQuery
-  const { data=fallback } = useQuery({
+  const { data = fallback } = useQuery({
     queryKey: [queryKeys.treatments],
-    queryFn: getTreatments, 
+    queryFn: getTreatments,
+    staleTime: 600000, //10 minutos
+    gcTime: 900000, // 15 minutes (doesn't make sense for staleTime to exceed gcTime)
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   return data;
@@ -29,5 +34,7 @@ export function usePrefetchTreatments(): void {
   queryClient.prefetchQuery({
     queryKey: [queryKeys.treatments],
     queryFn: getTreatments,
+    staleTime: 600000, //10 minutos
+    gcTime: 900000, // 15 minutes (doesn't make sense for staleTime to exceed gcTime)
   })
 }

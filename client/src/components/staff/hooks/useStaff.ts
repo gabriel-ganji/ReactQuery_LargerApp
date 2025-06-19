@@ -3,10 +3,11 @@ import { useCallback, useState } from "react";
 
 import type { Staff } from "@shared/types";
 
+import { filterByTreatment } from "../utils";
+
 // import { filterByTreatment } from "../utils";
 import { axiosInstance } from "@/axiosInstance";
 import { queryKeys } from "@/react-query/constants";
-import { filterByTreatment } from "../utils";
 
 // query function for useQuery
 async function getStaff(): Promise<Staff[]> {
