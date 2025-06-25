@@ -5,8 +5,8 @@ import type { User } from "@shared/types";
 
 import { useLoginData } from "@/auth/AuthContext";
 import { axiosInstance, getJWTHeader } from "@/axiosInstance";
-import { generateUserKey } from "@/react-query/key-factories";
 import { queryKeys } from "@/react-query/constants";
+import { generateUserKey } from "@/react-query/key-factories";
 
 // query function
 async function getUser(userId: number, userToken: string) {
@@ -46,7 +46,7 @@ export function useUser() {
   // meant to be called from useAuth
   function clearUser() {
     //reset user to null in query cache
-    queryClient.removeQueries({ queryKey: [queryKeys.user] });
+    queryClient.removeQueries({ queryKey: [queryKeys.appointments, queryKeys.user] });
   }
 
   return { user, updateUser, clearUser };
