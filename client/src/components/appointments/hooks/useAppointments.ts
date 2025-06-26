@@ -82,7 +82,7 @@ export function useAppointments() {
       queryFn: () => getAppointments(nextMonthYear.year, nextMonthYear.month),
       ...commonOptions,
     });
-  }, [queryClient, monthYear, commonOptions]);
+  }, [queryClient, monthYear]);
 
   // Notes:
   //    1. appointments is an AppointmentDateMap (object with days of month
