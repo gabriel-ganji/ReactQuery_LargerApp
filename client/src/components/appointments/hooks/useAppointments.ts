@@ -97,7 +97,7 @@ export function useAppointments() {
     queryFn: () => getAppointments(monthYear.year, monthYear.month),
     select: (data) => selectFn(data, showAll),
     refetchOnWindowFocus: true,
-    refetchInterval: 3000, //every 3 seconds; not recommended for production
+    refetchInterval: 30000, //every 30 seconds
     ...commonOptions,
   })
 
